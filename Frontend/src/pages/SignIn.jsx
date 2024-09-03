@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import login from "../services/login";
+import loginService from "../services/login";
 import useAuthStore from "../store/authStore";
 import { redirect, useNavigate } from "react-router-dom";
 import { Input } from "../components/ui/input";
 import PasswordInput from "@/components/ui/passwordInput";
-const SignIn = () => {
-  const navigate = useNavigate();
-  const { isLoggedIn, login } = useAuthStore();
+import useCurrentUser from "@/store/currentUserStore";
 
+const SignIn = () => {
+  const { login } = useAuthStore();
+  const { setCurrentUser } = useCurrentUser();
   const [formData, setFormData] = useState({
     userID: "",
     password: "",
@@ -21,15 +22,12 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const res = await login(formData.userID, formData.password);
-    login();
-  };
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate("/student");
+    const res = await loginService(formData.userID, formData.password);
+    if (res.status) {
+      await setCurrentUser(res.data);
+      await login();
     }
-  }, [isLoggedIn]);
+  };
 
   return (
     <div className="xs:relative w-full h-screen flex items-center justify-center bg-slate-950 z-1">
@@ -45,7 +43,7 @@ const SignIn = () => {
             </h5>
             <Input
               onInputChange={handleChange}
-              type="email"
+              type="text"
               name="userID"
               htmlFor="text"
               labelText="Your ID"
