@@ -1,37 +1,19 @@
 import React, { useEffect } from "react";
-import {
-  Outlet,
-  Navigate,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { Outlet, Navigate, useLocation, useNavigate } from "react-router-dom";
 import useAuthStore from "../../store/authStore";
-
+import { getPostion } from "../../utils/getCurrentUserPosition";
 export default function AuthRequired() {
-  const location = useLocation();
   const navigate = useNavigate();
-  const { isLoggedIn } = useAuthStore();
+  const { isLoggedIn, login, logout } = useAuthStore();
 
   useEffect(() => {
+    
     if (!isLoggedIn) {
       navigate("/");
     } else {
-      navigate("/student");
+      const { positionID } = getPostion();
+      console.log(positionID);
     }
-  }, []);
-
-  if (!location.pathname.includes("/") && !isLoggedIn) {
-    return (
-      <Navigate
-        to="/"
-        state={{
-          message: "You must log in first!",
-          prevLoc: location.pathname,
-        }}
-        replace
-      />
-    );
-  }
-
+  }, [isLoggedIn]);
   return <Outlet />;
 }

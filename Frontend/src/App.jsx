@@ -11,8 +11,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<SignIn />} />
         <Route element={<AuthRequired />}>
+          <Route path="/" element={<SignIn />} />
           <Route element={<Layout />}>
             <Route path="student">
               <Route index element={<HomeAdmin />} />
@@ -25,7 +25,7 @@ function App() {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter> 
+    </BrowserRouter>
   );
 }
 

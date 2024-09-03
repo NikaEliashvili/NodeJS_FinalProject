@@ -11,7 +11,6 @@ import { adduserInAcademicRecordsCollection } from "../addUserInARC/addUserInARC
 import { generatePassword } from "../../../utils/generateUserPassword.js";
 async function createUser(req, res) {
   const userInfo = req.body;
-  // console.log(userInfo);
   if (req.body.positionID === 1) {
     const addedInARC = await adduserInAcademicRecordsCollection(
       userInfo,
