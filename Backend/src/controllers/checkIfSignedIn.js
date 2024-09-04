@@ -1,19 +1,20 @@
 import jwt from "jsonwebtoken";
-
+import { getUserByID } from "../utils/getUserByID.js";
 const checkIfSignedIn = async (req, res) => {
   const accessToken = req.cookies.accessToken || req.header("accessToken");
   if (!accessToken) {
-    return res.json({ isAuthenticated: false });
+    return res.json({ status: false });
   }
 
   await jwt.verify(
     accessToken,
     process.env.ACCESS_TOKEN_SECRET,
-    (err, decoded) => {
+    async (err, decoded) => {
       if (err) {
-        return res.json({ isAuthenticated: false });
+        return res.json({ status: false });
       }
-      return res.json({ isAuthenticated: true, userID: decoded.userID });
+      const user = await getUserByID(decoded.userID);
+      return res.json({ status: true, user });
     }
   );
 };

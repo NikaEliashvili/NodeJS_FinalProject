@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FaUserGraduate } from "react-icons/fa";
-import { TbLogout2 } from "react-icons/tb";
 import { Link, useNavigate } from "react-router-dom";
 import useAuthStore from "../../store/authStore";
+import logoutService from "@/services/auth/logout";
+import UserGraduate from "@/assets/SVG/UserGraduate";
+import LogoutSVG from "@/assets/SVG/LogoutSVG";
 
 const UserDropDownMenu = () => {
   const ref = useRef();
@@ -16,6 +17,7 @@ const UserDropDownMenu = () => {
 
   const signout = () => {
     logout();
+    logoutService();
     navigate("/");
   };
 
@@ -28,8 +30,7 @@ const UserDropDownMenu = () => {
 
     document.addEventListener("mousedown", handleOutsideClick);
 
-    return () =>
-      document.removeEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, []);
 
   return (
@@ -63,15 +64,14 @@ const UserDropDownMenu = () => {
           tabIndex="-1"
           id="user-menu-item-0"
         >
-          Your Profile{" "}
-          <FaUserGraduate className="text-lg opacity-90" />
+          Your Profile <UserGraduate className="text-lg opacity-90" />
         </Link>
         <button
           onClick={signout}
           className="w-full flex justify-between items-center px-4 py-2 text-sm text-gray-100 bg-inherit hover:brightness-110"
         >
           Sign out
-          <TbLogout2 className="text-lg opacity-90" />
+          <LogoutSVG className="text-lg opacity-90" />
         </button>
       </div>
     </div>

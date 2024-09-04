@@ -7,8 +7,9 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react";
 
+import ArrowDown from "@/assets/SVG/ArrowDown";
+import ArrowUpDown from "@/assets/SVG/ArrowUpDown";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -64,7 +65,7 @@ export default function CustomTable({
       columnVisibility,
       rowSelection,
     },
-  }); 
+  });
 
   React.useEffect(() => {
     const selectedRows = table
@@ -75,7 +76,7 @@ export default function CustomTable({
   }, [rowSelection]);
 
   return (
-    <div className={cn("w-full",className)}>
+    <div className={cn("w-full", className)}>
       <div className="flex items-center py-4 gap-8">
         {searchable && (
           <Input
@@ -91,7 +92,7 @@ export default function CustomTable({
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
               Columns
-              <ChevronDown className="sm:ml-2 h-4 w-4" />
+              <ArrowDown className="sm:ml-2 h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -175,7 +176,7 @@ export default function CustomTable({
         {searchable && (
           <div className="space-x-2">
             <Button
-              variant="outline" 
+              variant="outline"
               size="sm"
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
