@@ -13,7 +13,7 @@ const authenticate = async (req, res, next) => {
     await createAccessTokenWithRefreshToken(req, res, refreshToken);
     next();
   } else {
-    jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
+    await jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
       if (err) {
         if (err.name === "TokenExpiredError" && refreshToken) {
           createAccessTokenWithRefreshToken(req, res, refreshToken);

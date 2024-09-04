@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import CustomTable from "@/components/CustomTable/CustomTable";
 import { Button } from "@/components/ui/button";
-import { ArrowUpDown, AlarmClock } from "lucide-react";
-
+import ArrowUpDown from "@/assets/SVG/ArrowUpDown";
+import AlarmClock from "@/assets/SVG/AlarmClock";
 const data = [
   {
     id: "m5gr84i9",

@@ -2,8 +2,10 @@
 
 import * as React from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
-import { Check, ChevronRight, Circle } from "lucide-react";
 
+import Check from "@/assets/SVG/Check";
+import ChevronRight from "@/assets/SVG/ChevronRight";
+import Circle from "@/assets/SVG/Circle";
 import { cn } from "@/lib/utils";
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
@@ -67,8 +69,7 @@ const DropdownMenuContent = React.forwardRef(
     </DropdownMenuPrimitive.Portal>
   )
 );
-DropdownMenuContent.displayName =
-  DropdownMenuPrimitive.Content.displayName;
+DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName;
 
 const DropdownMenuItem = React.forwardRef(
   ({ className, inset, ...props }, ref) => (
@@ -127,8 +128,7 @@ const DropdownMenuRadioItem = React.forwardRef(
     </DropdownMenuPrimitive.RadioItem>
   )
 );
-DropdownMenuRadioItem.displayName =
-  DropdownMenuPrimitive.RadioItem.displayName;
+DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName;
 
 const DropdownMenuLabel = React.forwardRef(
   ({ className, inset, ...props }, ref) => (
@@ -143,8 +143,7 @@ const DropdownMenuLabel = React.forwardRef(
     />
   )
 );
-DropdownMenuLabel.displayName =
-  DropdownMenuPrimitive.Label.displayName;
+DropdownMenuLabel.displayName = DropdownMenuPrimitive.Label.displayName;
 
 const DropdownMenuSeparator = React.forwardRef(
   ({ className, ...props }, ref) => (
@@ -155,16 +154,12 @@ const DropdownMenuSeparator = React.forwardRef(
     />
   )
 );
-DropdownMenuSeparator.displayName =
-  DropdownMenuPrimitive.Separator.displayName;
+DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName;
 
 const DropdownMenuShortcut = ({ className, ...props }) => {
   return (
     <span
-      className={cn(
-        "ml-auto text-xs tracking-widest opacity-60",
-        className
-      )}
+      className={cn("ml-auto text-xs tracking-widest opacity-60", className)}
       {...props}
     />
   );

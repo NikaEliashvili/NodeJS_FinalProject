@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import loginService from "../services/login";
+import loginService from "../services/auth/login";
 import useAuthStore from "../store/authStore";
 import { redirect, useNavigate } from "react-router-dom";
 import { Input } from "../components/ui/input";
@@ -17,7 +17,6 @@ const SignIn = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    console.log(formData);
   };
 
   const handleSubmit = async (e) => {

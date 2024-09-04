@@ -2,15 +2,14 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import useSidebarStore from "../../store/sidebarStore";
 import { BREAK_POINT } from "../../utils/constants";
-import { IoMdClose } from "react-icons/io";
-import {
-  RiArrowLeftWideFill,
-  RiArrowRightWideFill,
-} from "react-icons/ri";
-import { BiSolidHome } from "react-icons/bi";
-import { CgTranscript } from "react-icons/cg";
-import { MdLocalLibrary, MdOutlinePayments } from "react-icons/md";
-import { FaRegAddressBook } from "react-icons/fa6";
+import Transcript from "../../assets/SVG/Transcript";
+import Home from "@/assets/SVG/Home";
+import Payments from "@/assets/SVG/Payments";
+import AddressBook from "@/assets/SVG/AddressBook";
+import Library from "@/assets/SVG/Library";
+import ArrowRight from "@/assets/SVG/ArrowRight";
+import ArrowLeft from "@/assets/SVG/ArrowLeft";
+import Xmark from "@/assets/SVG/Xmark";
 
 const Sidebar = () => {
   const {
@@ -18,9 +17,7 @@ const Sidebar = () => {
     closeSidebar,
     toggleSidebar,
   } = useSidebarStore();
-  const [isMobile, setIsMobile] = useState(
-    window.innerWidth < BREAK_POINT
-  );
+  const [isMobile, setIsMobile] = useState(window.innerWidth < BREAK_POINT);
 
   useEffect(() => {
     if (isMobile && isSidebarOpen) {
@@ -56,9 +53,9 @@ const Sidebar = () => {
           className="absolute inset-0 left-full m-auto text-4xl z-[999999999999999] opacity-0 transition-all duration-[0.350s] hover:opacity-100 sm:h-full w-fit delay-100  bg-white/5 backdrop-blur-lg duration-300 hover:ring-0"
         >
           {isSidebarOpen ? (
-            <RiArrowLeftWideFill className="text-white opacity-60 " />
+            <ArrowLeft className="text-white opacity-60 " />
           ) : (
-            <RiArrowRightWideFill className="text-white opacity-60 " />
+            <ArrowRight className="text-white opacity-60 " />
           )}
         </button>
       )}
@@ -86,7 +83,7 @@ const Sidebar = () => {
               onClick={closeSidebar}
               title="Close Sidebar"
             >
-              <IoMdClose className="text-3xl text-white/40" />
+              <Xmark className="text-3xl text-white/40" />
             </button>
           </div>
           <ul className="space-y-2 font-medium">
@@ -99,7 +96,7 @@ const Sidebar = () => {
                   " flex items-center p-2 rounded-lg  pl-4 pr-12 text-white hover:bg-gray-700 group"
                 }
               >
-                <BiSolidHome className="flex-shrink-0 w-5 h-5 transition duration-75 text-gray-400 group-hover:text-white" />
+                <Home className="flex-shrink-0 w-5 h-5 transition duration-75 text-gray-400 group-hover:text-white" />
                 <span className="ms-3">Home</span>
               </NavLink>
             </li>
@@ -112,7 +109,7 @@ const Sidebar = () => {
                   " flex items-center p-2 rounded-lg  pl-4 pr-12 text-white hover:bg-gray-700 group"
                 }
               >
-                <CgTranscript className="flex-shrink-0 w-5 h-5  transition duration-75 text-gray-400 group-hover:text-white" />
+                <Transcript className="flex-shrink-0 w-5 h-5  transition duration-75 text-gray-400 group-hover:text-white" />
                 <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
                   Transcript
                 </span>
@@ -127,7 +124,7 @@ const Sidebar = () => {
                   " flex items-center p-2 rounded-lg  pl-4 pr-12 text-white hover:bg-gray-700 group"
                 }
               >
-                <MdOutlinePayments className="flex-shrink-0 w-5 h-5 transition duration-75 text-gray-400 group-hover:text-white" />
+                <Payments className="flex-shrink-0 w-5 h-5 transition duration-75 text-gray-400 group-hover:text-white" />
                 <span className="flex-1 ms-3 whitespace-nowrap">
                   Tuition Fee
                 </span>
@@ -142,7 +139,7 @@ const Sidebar = () => {
                   " flex items-center p-2 rounded-lg  pl-4 pr-12 text-white hover:bg-gray-700 group"
                 }
               >
-                <FaRegAddressBook className="flex-shrink-0 w-5 h-5 transition duration-75 text-gray-400 group-hover:text-white" />
+                <AddressBook className="flex-shrink-0 w-5 h-5 transition duration-75 text-gray-400 group-hover:text-white" />
                 <span className="flex-1 ms-3 whitespace-nowrap">
                   Regulations
                 </span>
@@ -158,10 +155,8 @@ const Sidebar = () => {
                   " flex items-center p-2 rounded-lg  pl-4 pr-12 text-white hover:bg-gray-700 group"
                 }
               >
-                <MdLocalLibrary className="flex-shrink-0 w-5 h-5 transition duration-75 text-gray-400 group-hover:text-white" />
-                <span className="flex-1 ms-3 whitespace-nowrap">
-                  Library
-                </span>
+                <Library className="flex-shrink-0 w-5 h-5 transition duration-75 text-gray-400 group-hover:text-white" />
+                <span className="flex-1 ms-3 whitespace-nowrap">Library</span>
               </NavLink>
             </li>
           </ul>

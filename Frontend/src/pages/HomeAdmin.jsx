@@ -1,7 +1,7 @@
 import React from "react";
 import CustomTable from "@/components/CustomTable/CustomTable";
 import { Button } from "@/components/ui/button";
-import { ArrowUpDown, AlarmClock } from "lucide-react";
+import ArrowUpDown from "@/assets/SVG/ArrowUpDown";
 import Card from "@/components/InformationCard/Card";
 const data = [
   {
