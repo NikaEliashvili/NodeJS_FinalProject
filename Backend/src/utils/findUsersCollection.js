@@ -23,7 +23,7 @@ async function findUsersInCollection(foundUser, positionID) {
   }
   return foundUserData;
 }
-
+  
 async function findUserInStudentColl(userId) {
   const foundStudent = await Students.find({ userID: userId });
   return foundStudent;

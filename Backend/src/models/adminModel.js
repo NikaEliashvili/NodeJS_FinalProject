@@ -39,18 +39,6 @@ const adminSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    enrolledYear: {
-      type: Number,
-      required: true,
-    },
-    subjectID: {
-      type: String,
-      required: true,
-    },
-    sector: {
-      type: String,
-      required: true,
-    },
     image: {
       type: String,
       required: false,

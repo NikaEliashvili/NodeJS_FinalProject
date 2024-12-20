@@ -14,6 +14,7 @@ export default function AuthRequired() {
         if (res && res.data && res.data.status !== undefined) {
           if (res.data.status) {
             setCurrentUser(res.data.user);
+            
             login();
           } else {
             console.log("else is here");

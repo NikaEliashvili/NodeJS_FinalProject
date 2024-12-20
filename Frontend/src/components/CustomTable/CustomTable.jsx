@@ -34,9 +34,7 @@ import { cn } from "@/lib/utils";
 export default function CustomTable({
   searchable = true,
   searchBy = "",
-  handleSearch = () => {
-    console.log("It needs 'handleSearch' function prop");
-  },
+  handleSearch,
   columns,
   data,
   onSelectedRowsChange = () => {},
@@ -71,20 +69,35 @@ export default function CustomTable({
     const selectedRows = table
       .getSelectedRowModel()
       .rows.map((row) => row.original);
-    // Call the callback with selected rows
+
     onSelectedRowsChange(selectedRows);
   }, [rowSelection]);
+
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+
+    if (searchBy) {
+      const column = table.getColumn(searchBy)
+      if (column) {
+        column.setFilterValue(value);
+      }
+    } else {
+      columns.forEach((column) => {
+        table.getColumn(column.accessorKey)?.setFilterValue(value);
+      });
+    }
+
+    handleSearch(e); 
+  };
 
   return (
     <div className={cn("w-full", className)}>
       <div className="flex items-center py-4 gap-8">
         {searchable && (
           <Input
-            placeholder="Find student..."
-            value={
-              searchBy ? table.getColumn(searchBy)?.getFilterValue() || "" : ""
-            }
-            onChange={handleSearch}
+            placeholder="Find user..."
+            value={table.getColumn(searchBy)?.getFilterValue() || ""}
+            onChange={handleSearchChange}
             className="max-w-sm"
           />
         )}
