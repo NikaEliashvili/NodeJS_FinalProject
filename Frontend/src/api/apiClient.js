@@ -12,9 +12,7 @@ const apiClient = axios.create({
 apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
-    // Handle specific status codes here
     if (error.response && error.response.status === 401) {
-      // Handle 401 Unauthorized
       window.location;
     }
     return Promise.reject(error);

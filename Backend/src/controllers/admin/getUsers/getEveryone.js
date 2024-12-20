@@ -1,5 +1,5 @@
-import Students from '../../../models/studentModel'
-import Lecturers from "../../../models/lecturerModel";
+import Students from "../../../models/studentModel.js";
+import Lecturers from "../../../models/lecturerModel.js";
 async function getEveryone(req, res) {
   try {
     const students = await Students.find();
@@ -10,7 +10,9 @@ async function getEveryone(req, res) {
       lecturers,
     });
   } catch (error) {
-    return res.status(500).json({ error: "An error occurred while fetching data" });
+    return res
+      .status(500)
+      .json({ error: "An error occurred while fetching data" });
   }
 }
 

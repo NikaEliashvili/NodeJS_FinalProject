@@ -2,9 +2,11 @@ import jwt from "jsonwebtoken";
 import { getUserByID } from "../utils/getUserByID.js";
 const checkIfSignedIn = async (req, res) => {
   const accessToken = req.cookies.accessToken || req.header("accessToken");
+
   if (!accessToken) {
     return res.json({ status: false });
   }
+  
 
   await jwt.verify(
     accessToken,

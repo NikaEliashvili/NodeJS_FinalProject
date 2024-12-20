@@ -25,6 +25,8 @@ const SignIn = () => {
     if (res.status) {
       await setCurrentUser(res.data);
       await login();
+      console.log(res.data);
+      
     }
   };
 
